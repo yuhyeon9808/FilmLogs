@@ -1,5 +1,6 @@
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import '../global.css';
 
 export default function RootLayout() {
@@ -12,11 +13,13 @@ export default function RootLayout() {
   if (!loaded) return null;
 
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        contentStyle: { backgroundColor: '#0A0A0D' },
-      }}
-    />
+    <SafeAreaView className="flex-1 bg-[#0A0A0D]">
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { backgroundColor: '#0A0A0D' },
+        }}
+      />
+    </SafeAreaView>
   );
 }
