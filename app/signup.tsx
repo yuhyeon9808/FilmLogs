@@ -1,6 +1,59 @@
-import React from 'react';
-import { View } from 'react-native';
+import Btn from '@/components/ui/Btn';
+import Input from '@/components/ui/Input';
+import { supabase } from '@/lib/supabaseClient';
+import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import { Text, View } from 'react-native';
 
-export default function signup() {
-  return <View></View>;
+export default function Signup() {
+  const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSignup = async () => {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    if (error) {
+      console.log('회원가입 에러:', error.message);
+      return;
+    }
+
+    console.log('회원가입 성공:', data);
+    router.replace('/login');
+  };
+
+  return (
+    <View className="w-full flex-1 px-4 ">
+      <View className="w-full h-full border-x border-text-main flex justify-center items-center">
+        <View className="flex justify-center items-center">
+          <Text className="text-text-main text-36 font-dis text-center mb-5">
+            My Film Logs
+          </Text>
+          <View className="flex gap-4">
+            <Input
+              text="이메일"
+              type="email"
+              value={email}
+              onChangeText={setEmail}
+            />
+            <Input
+              text="비밀번호"
+              type="password"
+              value={password}
+              onChangeText={setPassword}
+            />
+            <Btn
+              text="회원가입"
+              width={260}
+              handle={handleSignup}
+              bg="#1F1F21"
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  );
 }
