@@ -1,3 +1,4 @@
+import { BASE_URL } from '@/constants/Movie';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
@@ -18,9 +19,6 @@ export default function MovieCard({
   date,
   ratingValue,
 }: MovieCardProps) {
-  const path =
-    'https://lmizujqllfopzyzeurkc.supabase.co/storage/v1/object/public/poster/';
-
   const router = useRouter();
 
   return (
@@ -35,7 +33,7 @@ export default function MovieCard({
     >
       <View className="flex flex-col items-center pt-4">
         <Image
-          source={{ uri: path + poster }}
+          source={{ uri: BASE_URL + poster }}
           className="w-[131px] h-[187px] border border-text-main "
         />
         <View className=" flex gap-2 py-4">
