@@ -20,6 +20,7 @@ module.exports = {
       },
       fontFamily: {
         preR: ['preR'],
+        preS: ['preS'],
         preB: ['preB'],
         dis: ['dis'],
       },

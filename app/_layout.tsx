@@ -6,6 +6,7 @@ import '../global.css';
 export default function RootLayout() {
   const [loaded] = useFonts({
     preR: require('../assets/fonts/Pretendard-Regular.otf'),
+    preS: require('../assets/fonts/Pretendard-SemiBold.otf'),
     preB: require('../assets/fonts/Pretendard-Bold.otf'),
     dis: require('../assets/fonts/DMSerifDisplay-Regular.ttf'),
   });
