@@ -5,13 +5,12 @@ export interface MovieInfoType {
   title: string;
   poster_url: string;
   rating: number;
-  watch_date: string;
 }
 
 export async function movieInfo(): Promise<MovieInfoType[]> {
   const { data } = await supabase
     .from('film_logs')
-    .select('id,title, poster_url, rating, watch_date');
+    .select('id,title, poster_url, rating');
 
   return data as MovieInfoType[];
 }

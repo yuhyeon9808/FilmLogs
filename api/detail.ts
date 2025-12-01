@@ -6,13 +6,12 @@ export interface DetailInfoType {
   rating: number;
   quote: string;
   review: string;
-  watch_date: string;
 }
 
 export async function getDetail(id: string): Promise<DetailInfoType> {
   const { data } = await supabase
     .from('film_logs')
-    .select('title, poster_url, rating, quote, review, watch_date')
+    .select('title, poster_url, rating, quote, review')
     .eq('id', id)
     .single();
 

@@ -22,7 +22,7 @@ export default function Login() {
     }
 
     console.log('로그인 성공:', data);
-    router.replace('/homefeed');
+    router.replace('/movie/homefeed');
   };
 
   return (

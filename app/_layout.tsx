@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -11,16 +12,20 @@ export default function RootLayout() {
     dis: require('../assets/fonts/DMSerifDisplay-Regular.ttf'),
   });
 
+  const queryClient = new QueryClient();
+
   if (!loaded) return null;
 
   return (
-    <SafeAreaView className="flex-1 bg-[#0A0A0D]">
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          contentStyle: { backgroundColor: '#0A0A0D' },
-        }}
-      />
-    </SafeAreaView>
+    <QueryClientProvider client={queryClient}>
+      <SafeAreaView className="flex-1 bg-[#0A0A0D]">
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            contentStyle: { backgroundColor: '#0A0A0D' },
+          }}
+        />
+      </SafeAreaView>
+    </QueryClientProvider>
   );
 }
