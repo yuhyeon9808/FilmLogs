@@ -7,7 +7,6 @@ import { StarRatingDisplay } from 'react-native-star-rating-widget';
 interface MovieCardProps {
   poster: string;
   title: string;
-  date: string;
   ratingValue: number;
   id: string;
 }
@@ -16,7 +15,6 @@ export default function MovieCard({
   id,
   poster,
   title,
-  date,
   ratingValue,
 }: MovieCardProps) {
   const router = useRouter();
@@ -46,7 +44,6 @@ export default function MovieCard({
               emptyColor="#D9D9D9"
             />
           </View>
-          <Text className="text-date-text  ">{date}</Text>
         </View>
       </View>
     </Pressable>

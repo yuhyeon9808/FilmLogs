@@ -17,6 +17,7 @@ module.exports = {
         'card-border': '#525050',
         'date-text': '#6B6969',
         'button-bg': '#1F1F21',
+        'save-btn': '#A64805',
       },
       fontFamily: {
         preR: ['preR'],
