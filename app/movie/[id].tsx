@@ -1,15 +1,26 @@
 import Header from '@/components/layout/Header';
 import Btn from '@/components/ui/Btn';
 import { BASE_URL } from '@/constants/Movie';
-import { useFilmLog } from '@/hooks/useFilmLog';
-import { useRouter } from 'expo-router';
+import { useDeleteFilm } from '@/hooks/useDeleteFilm';
+import { useFilmDetail } from '@/hooks/useFilmLog';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { ArrowLeft } from 'lucide-react-native';
 import { Image, ScrollView, Text, View } from 'react-native';
 import { StarRatingDisplay } from 'react-native-star-rating-widget';
 
 export default function MovieDetail() {
   const router = useRouter();
-  const { data } = useFilmLog();
+  const { id } = useLocalSearchParams();
+
+  const { data } = useFilmDetail(String(id));
+  const deleteMutation = useDeleteFilm();
+
+  const deleteHandle = async (id: string) => {
+    await deleteMutation.mutateAsync(id);
+
+    router.push('/movie/homefeed');
+  };
+
   return (
     <ScrollView className="px-4 flex-1">
       <Header
@@ -46,7 +57,11 @@ export default function MovieDetail() {
       </View>
       <View className="flex flex-row justify-center my-7 gap-5">
         <Btn text="Edit" width={155} handle={() => {}} bg="#1F1F21" />
-        <Btn text="Delete" width={155} handle={() => {}} />
+        <Btn
+          text="Delete"
+          width={155}
+          handle={() => deleteHandle(String(id))}
+        />
       </View>
     </ScrollView>
   );

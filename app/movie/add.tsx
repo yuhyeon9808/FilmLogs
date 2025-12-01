@@ -129,6 +129,7 @@ export default function Add() {
             className="w-full border border-text-main rounded-xl text-16 pl-3 py-2 text-text-main h-[220px]"
             value={review}
             onChangeText={setReview}
+            textAlignVertical="top"
           />
         </View>
       </View>
@@ -139,7 +140,6 @@ export default function Add() {
         disabled={isSubmitting}
       >
         <Text className="text-text-main font-preB text-16">
-          {' '}
           {isSubmitting ? '저장 중...' : '저장하기'}
         </Text>
       </Pressable>
