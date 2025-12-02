@@ -1,6 +1,6 @@
 import Header from '@/components/layout/Header';
 import TextBox from '@/components/ui/TextBox';
-import { BASE_URL } from '@/constants/Movie';
+import { BASE_URL } from '@/constants/movie';
 import { useFilmDetail } from '@/hooks/useFilmLog';
 import { useUpdateFilmLog } from '@/hooks/useUpdateFilmLog';
 import * as ImagePicker from 'expo-image-picker';
