@@ -1,4 +1,4 @@
-import { BASE_URL } from '@/constants/Movie';
+import { BASE_URL } from '@/constants/movie';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Image, Pressable, Text, View } from 'react-native';

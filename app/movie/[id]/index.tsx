@@ -1,6 +1,6 @@
 import Header from '@/components/layout/Header';
 import Btn from '@/components/ui/Btn';
-import { BASE_URL } from '@/constants/Movie';
+import { BASE_URL } from '@/constants/movie';
 import { useDeleteFilm } from '@/hooks/useDeleteFilm';
 import { useFilmDetail } from '@/hooks/useFilmLog';
 import { useLocalSearchParams, useRouter } from 'expo-router';
