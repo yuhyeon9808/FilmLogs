@@ -56,7 +56,12 @@ export default function MovieDetail() {
         </View>
       </View>
       <View className="flex flex-row justify-center my-7 gap-5">
-        <Btn text="Edit" width={155} handle={() => {}} bg="#1F1F21" />
+        <Btn
+          text="Edit"
+          width={155}
+          handle={() => router.push(`/movie/${id}/edit`)}
+          bg="#1F1F21"
+        />
         <Btn
           text="Delete"
           width={155}
