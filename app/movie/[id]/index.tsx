@@ -1,17 +1,19 @@
 import Header from '@/components/layout/Header';
 import Btn from '@/components/ui/Btn';
+import DeleteModal from '@/components/ui/DeleteModal';
 import { BASE_URL } from '@/constants/movie';
 import { useDeleteFilm } from '@/hooks/useDeleteFilm';
 import { useFilmDetail } from '@/hooks/useFilmLog';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { ArrowLeft } from 'lucide-react-native';
+import { useState } from 'react';
 import { Image, ScrollView, Text, View } from 'react-native';
 import { StarRatingDisplay } from 'react-native-star-rating-widget';
 
 export default function MovieDetail() {
   const router = useRouter();
   const { id } = useLocalSearchParams();
-
+  const [isOpen, setIsOPen] = useState(false);
   const { data } = useFilmDetail(String(id));
   const deleteMutation = useDeleteFilm();
 
@@ -65,9 +67,14 @@ export default function MovieDetail() {
         <Btn
           text="Delete"
           width={155}
-          handle={() => deleteHandle(String(id))}
+          handle={() => setIsOPen((prev) => !prev)}
         />
       </View>
+      <DeleteModal
+        isOpen={isOpen}
+        setOpen={setIsOPen}
+        handleDelete={() => deleteHandle(String(id))}
+      />
     </ScrollView>
   );
 }

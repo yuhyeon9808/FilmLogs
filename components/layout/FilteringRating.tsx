@@ -50,8 +50,8 @@ export default function FilteringRating({
               size={20}
             />
             <Text
-              className={`text-text-sub text-18 ${
-                select === rating.text ? 'text-star-active' : ''
+              className={` text-18 ${
+                select === rating.text ? 'text-star-active' : 'text-text-sub'
               }`}
             >
               {rating.text}
