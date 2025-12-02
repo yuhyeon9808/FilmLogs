@@ -4,12 +4,20 @@ import MovieCard from '@/components/layout/MovieCard';
 import { useFilmLogs } from '@/hooks/useFilmLogs';
 import { useRouter } from 'expo-router';
 import { Plus, SlidersHorizontal } from 'lucide-react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList, View } from 'react-native';
 
 export default function HomeFeed() {
   const { data } = useFilmLogs();
   const router = useRouter();
+  const [keyWord, setKeyword] = useState('');
+
+  const filtering =
+    keyWord.trim() !== ''
+      ? data?.filter((item) =>
+          item.title.toLowerCase().includes(keyWord.trim()?.toLocaleLowerCase())
+        )
+      : data;
 
   return (
     <View className="px-4 flex-1 ">
@@ -18,10 +26,10 @@ export default function HomeFeed() {
         RightIcon={Plus}
         RightPress={() => router.push('/movie/add')}
       />
-      <SearchInput />
+      <SearchInput keyWord={keyWord} setKeyword={setKeyword} />
       <FlatList
         className="mt-7 mb-10"
-        data={data}
+        data={filtering}
         numColumns={2}
         keyExtractor={(item) => item.id}
         columnWrapperStyle={{ gap: 12 }}
